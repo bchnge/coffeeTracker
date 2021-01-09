@@ -12,32 +12,43 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Coffee.date, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Item>
+    private var items: FetchedResults<Coffee>
 
     var body: some View {
-        List {
-            ForEach(items) { item in
-                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-            }
-            .onDelete(perform: deleteItems)
+        Button(action: addItem) {
+            Label("Add Item", systemImage: "plus")
         }
-        .toolbar {
-            #if os(iOS)
-            EditButton()
-            #endif
+        Text("Hello there").font(.title)
+        VStack{
+            List {
+                ForEach(items) { item in
+                    CoffeeView(coffee:item)
+                }
+                .onDelete(perform: deleteItems)
+            }
+            .toolbar {
+                #if os(iOS)
+                EditButton()
+                #endif
 
-            Button(action: addItem) {
-                Label("Add Item", systemImage: "plus")
+                Button(action: addItem) {
+                    Label("Add Item", systemImage: "plus")
+                }
             }
         }
+
     }
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            let newItem = Coffee(context: viewContext)
+            newItem.date = Date()
+            newItem.name = "Enter Name"
+            newItem.roastType = "Light"
+            newItem.origin = "Ethiopia"
+            //newItem.flavorNotes = ["sweet", "citrus"]
 
             do {
                 try viewContext.save()

@@ -13,6 +13,9 @@
 		F648147425A93A6900909F30 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F648147325A93A6900909F30 /* Preview Assets.xcassets */; };
 		F648147625A93A6900909F30 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F648147525A93A6900909F30 /* Persistence.swift */; };
 		F648147925A93A6900909F30 /* coffeeTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F648147725A93A6900909F30 /* coffeeTracker.xcdatamodeld */; };
+		F648148325A93F9C00909F30 /* Coffee+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F648148125A93F9C00909F30 /* Coffee+CoreDataClass.swift */; };
+		F648148425A93F9C00909F30 /* Coffee+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F648148225A93F9C00909F30 /* Coffee+CoreDataProperties.swift */; };
+		F648148B25A9421000909F30 /* CoffeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F648148A25A9421000909F30 /* CoffeeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		F648147525A93A6900909F30 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		F648147825A93A6900909F30 /* coffeeTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = coffeeTracker.xcdatamodel; sourceTree = "<group>"; };
 		F648147A25A93A6900909F30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F648148125A93F9C00909F30 /* Coffee+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coffee+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F648148225A93F9C00909F30 /* Coffee+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coffee+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F648148A25A9421000909F30 /* CoffeeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +46,9 @@
 		F648146025A93A6700909F30 = {
 			isa = PBXGroup;
 			children = (
+				F648148A25A9421000909F30 /* CoffeeView.swift */,
+				F648148125A93F9C00909F30 /* Coffee+CoreDataClass.swift */,
+				F648148225A93F9C00909F30 /* Coffee+CoreDataProperties.swift */,
 				F648146B25A93A6700909F30 /* coffeeTracker */,
 				F648146A25A93A6700909F30 /* Products */,
 			);
@@ -145,8 +154,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F648147625A93A6900909F30 /* Persistence.swift in Sources */,
+				F648148B25A9421000909F30 /* CoffeeView.swift in Sources */,
 				F648146F25A93A6700909F30 /* ContentView.swift in Sources */,
 				F648147925A93A6900909F30 /* coffeeTracker.xcdatamodeld in Sources */,
+				F648148425A93F9C00909F30 /* Coffee+CoreDataProperties.swift in Sources */,
+				F648148325A93F9C00909F30 /* Coffee+CoreDataClass.swift in Sources */,
 				F648146D25A93A6700909F30 /* coffeeTrackerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
