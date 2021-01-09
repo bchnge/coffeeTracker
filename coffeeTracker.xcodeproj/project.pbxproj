@@ -16,6 +16,7 @@
 		F648148325A93F9C00909F30 /* Coffee+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F648148125A93F9C00909F30 /* Coffee+CoreDataClass.swift */; };
 		F648148425A93F9C00909F30 /* Coffee+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F648148225A93F9C00909F30 /* Coffee+CoreDataProperties.swift */; };
 		F648148B25A9421000909F30 /* CoffeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F648148A25A9421000909F30 /* CoffeeView.swift */; };
+		F648148E25A9617500909F30 /* EditCoffeeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F648148D25A9617500909F30 /* EditCoffeeDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		F648148125A93F9C00909F30 /* Coffee+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coffee+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F648148225A93F9C00909F30 /* Coffee+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coffee+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F648148A25A9421000909F30 /* CoffeeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeView.swift; sourceTree = "<group>"; };
+		F648148D25A9617500909F30 /* EditCoffeeDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCoffeeDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 			children = (
 				F648146C25A93A6700909F30 /* coffeeTrackerApp.swift */,
 				F648146E25A93A6700909F30 /* ContentView.swift */,
+				F648148D25A9617500909F30 /* EditCoffeeDetailsView.swift */,
 				F648147025A93A6900909F30 /* Assets.xcassets */,
 				F648147525A93A6900909F30 /* Persistence.swift */,
 				F648147A25A93A6900909F30 /* Info.plist */,
@@ -158,6 +161,7 @@
 				F648146F25A93A6700909F30 /* ContentView.swift in Sources */,
 				F648147925A93A6900909F30 /* coffeeTracker.xcdatamodeld in Sources */,
 				F648148425A93F9C00909F30 /* Coffee+CoreDataProperties.swift in Sources */,
+				F648148E25A9617500909F30 /* EditCoffeeDetailsView.swift in Sources */,
 				F648148325A93F9C00909F30 /* Coffee+CoreDataClass.swift in Sources */,
 				F648146D25A93A6700909F30 /* coffeeTrackerApp.swift in Sources */,
 			);

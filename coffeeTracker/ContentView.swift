@@ -9,38 +9,71 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    // Control Edit Detail modal window
+    @State var showEditView = false
+    
     @Environment(\.managedObjectContext) private var viewContext
 
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Coffee.date, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Coffee>
+    @FetchRequest(entity: Coffee.entity(), sortDescriptors: [])
 
+    var items: FetchedResults<Coffee>
+    //var coffees: FetchedResults<Coffee>
+    //@FetchRequest(
+    //    sortDescriptors: [NSSortDescriptor(keyPath: \Coffee.date, ascending: true)],
+    //    animation: .default)
+    
     var body: some View {
-        Button(action: addItem) {
-            Label("Add Item", systemImage: "plus")
-        }
+        //Button(action: addItem) {
+        //    Label("Add Item", systemImage: "plus")
+        //}
+        Button(action: {
+            showEditView = true
+        }, label: {
+            Image(systemName: "plus.circle")
+                .imageScale(.large)
+        })
         Text("Hello there").font(.title)
         VStack{
             List {
                 ForEach(items) { item in
                     CoffeeView(coffee:item)
                 }
+
                 .onDelete(perform: deleteItems)
             }
+            .sheet(isPresented: $showEditView){
+                EditCoffeeDetailsView()
+            }
+
             .toolbar {
                 #if os(iOS)
                 EditButton()
                 #endif
-
-                Button(action: addItem) {
-                    Label("Add Item", systemImage: "plus")
-                }
+                
+//                Button(action: addItem) {
+ //                   Label("Add Item", systemImage: "plus")
+ //               }
             }
         }
 
     }
 
+    private func editItem() {
+        withAnimation {
+
+            do {
+                try viewContext.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
+    }
+
+    
+    
     private func addItem() {
         withAnimation {
             let newItem = Coffee(context: viewContext)
