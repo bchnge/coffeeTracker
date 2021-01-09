@@ -9,6 +9,12 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        return formatter
+    }()
+
     // Control Edit Detail modal window
     @State var showAddView = false
     @State var showEditView = false
@@ -23,35 +29,34 @@ struct ContentView: View {
     //    animation: .default)
     
     var body: some View {
-        //Button(action: addItem) {
-        //    Label("Add Item", systemImage: "plus")
-        //}
-        Text("coffee tracker").font(.title)
-        Button(action: {
-            showAddView = true
-        }, label: {
-            Image(systemName: "plus.circle")
-                .imageScale(.large)
-        })
-//        EditButton()
+    //        EditButton()
         VStack{
+            Text("coffee tracker").font(.title)
             NavigationView{
             List {
                 ForEach(items) { item in
-                    HStack{
-                        CoffeeView(coffee:item)
-                        Spacer()
-//                        Button(action: {
-//                                showEditView = true
-//                        }, label: {
-//                            Text(" edit ")
-//                        })
-                        NavigationLink(destination:CoffeeView(coffee:item)){
-                            //Text("edit")
+                    NavigationLink(destination:CoffeeView(coffee:item)){
+                        HStack{
+                            VStack{
+                                HStack{
+                                    Text(item.name).font(.title)
+                                    Spacer()
+                                }
+                                HStack{
+                                    Text(item.origin).bold()
+                                    Text(item.roastType).italic()
+                                    Spacer()
+                                    HStack{
+                                        Image(systemName: "hand.thumbsup").font(.system(size:15))
+                                        Text("\(item.rating)")
+                                    }
+                                    .padding(.horizontal)
+                                    Text("\(item.date, formatter: Self.dateFormatter)")
+                                }
+                            }
                         }
                     }
                 }
-
                 .onDelete(perform: deleteItems)
             }
             .sheet(isPresented: $showAddView){
@@ -61,15 +66,26 @@ struct ContentView: View {
                 #if os(iOS)
                 //EditButton()
                 #endif
-                
-//                Button(action: addItem) {
- //                   Label("Add Item", systemImage: "plus")
- //               }
-            }
             }
         }
-
+            Spacer()
+            HStack{
+                Button(action: {
+                    
+                }, label: {
+                    Text("Brew")
+                })
+                .padding()
+                Spacer()
+                Button(action: {
+                    showAddView = true
+                }, label: {
+                    Image(systemName: "plus.circle")
+                        .imageScale(.large)
+                }).padding(.horizontal)
+            }
     }
+}
     
     private func updateItem(coffee: Coffee) {
             let id = coffee.id

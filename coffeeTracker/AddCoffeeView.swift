@@ -37,6 +37,7 @@ struct AddCoffeeView: View {
                             print("Save the order!")
                             let coffee = Coffee(context:viewContext)
                             coffee.id = id
+                            coffee.date = Date()
                             coffee.name = name
                             coffee.origin = origin
                             coffee.roastType = roastType
