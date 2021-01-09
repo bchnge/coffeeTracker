@@ -15,6 +15,7 @@ struct PersistenceController {
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
             let newItem = Coffee(context: viewContext)
+            newItem.id = UUID()
             newItem.date = Date()
             newItem.name = "Enter name"
             newItem.origin = "Enter origin"

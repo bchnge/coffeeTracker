@@ -7,17 +7,20 @@
 
 import SwiftUI
 
-struct EditCoffeeDetailsView: View {
+struct EditCoffeeView: View {
+    
            
     @Environment(\.managedObjectContext) var viewContext
-    @Environment (\.presentationMode) var presentationMode
 
+    @Environment (\.presentationMode) var presentationMode
+    
+        @State var id = UUID()
         @State var name = ""
         @State var origin = ""
         @State var roastType = ""
         @State var rating: Int16 = 3
         
-        var body: some View {
+        var body: some View {            
             NavigationView {
                 Form {
                     Section(header: Text("Tell me about your coffee")) {
@@ -29,11 +32,11 @@ struct EditCoffeeDetailsView: View {
                     
                     Button(action: {
                         print("Save the order!")
-                        let coffee = Coffee(context:viewContext)
-                        coffee.name = name
-                        coffee.origin = origin
-                        coffee.roastType = roastType
-                        coffee.rating = rating
+
+                        //coffee.name = name
+                        //coffee.origin = origin
+                        //coffee.roastType = roastType
+                        //coffee.rating = rating
                         do {
                             try viewContext.save()
                             print("Order saved.")
@@ -42,10 +45,10 @@ struct EditCoffeeDetailsView: View {
                                 print(error.localizedDescription)
                             }
                     }) {
-                        Text("Add Order")
+                        Text("Save changes")
                     }
                 }
-                    .navigationTitle("Add Order")
+                    .navigationTitle("Edit Order")
             }
         }
     }

@@ -10,8 +10,8 @@ import CoreData
 
 struct ContentView: View {
     // Control Edit Detail modal window
+    @State var showAddView = false
     @State var showEditView = false
-    
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(entity: Coffee.entity(), sortDescriptors: [])
@@ -26,62 +26,60 @@ struct ContentView: View {
         //Button(action: addItem) {
         //    Label("Add Item", systemImage: "plus")
         //}
+        Text("coffee tracker").font(.title)
         Button(action: {
-            showEditView = true
+            showAddView = true
         }, label: {
             Image(systemName: "plus.circle")
                 .imageScale(.large)
         })
-        Text("Hello there").font(.title)
+//        EditButton()
         VStack{
+            NavigationView{
             List {
                 ForEach(items) { item in
-                    CoffeeView(coffee:item)
+                    HStack{
+                        CoffeeView(coffee:item)
+                        Spacer()
+//                        Button(action: {
+//                                showEditView = true
+//                        }, label: {
+//                            Text(" edit ")
+//                        })
+                        NavigationLink(destination:CoffeeView(coffee:item)){
+                            //Text("edit")
+                        }
+                    }
                 }
 
                 .onDelete(perform: deleteItems)
             }
-            .sheet(isPresented: $showEditView){
-                EditCoffeeDetailsView()
+            .sheet(isPresented: $showAddView){
+                AddCoffeeView()
             }
-
             .toolbar {
                 #if os(iOS)
-                EditButton()
+                //EditButton()
                 #endif
                 
 //                Button(action: addItem) {
  //                   Label("Add Item", systemImage: "plus")
  //               }
             }
-        }
-
-    }
-
-    private func editItem() {
-        withAnimation {
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
-    }
 
+    }
     
-    
+    private func updateItem(coffee: Coffee) {
+            let id = coffee.id
+            viewContext.performAndWait {
+                coffee.id = id
+                try? viewContext.save()
+            }
+        }
     private func addItem() {
         withAnimation {
-            let newItem = Coffee(context: viewContext)
-            newItem.date = Date()
-            newItem.name = "Enter Name"
-            newItem.roastType = "Light"
-            newItem.origin = "Ethiopia"
-            //newItem.flavorNotes = ["sweet", "citrus"]
 
             do {
                 try viewContext.save()
