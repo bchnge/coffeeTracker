@@ -8,11 +8,14 @@
         <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="roastType" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
-        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    <entity name="Recipe" representedClassName="Recipe" syncable="YES" codeGenerationType="class">
+        <attribute name="acidityRatio" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="recipeId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="servingSize" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="waterCoffeeRatio" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
     </entity>
     <elements>
-        <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
         <element name="Coffee" positionX="-263.0001220703125" positionY="83.82958984375" width="128" height="133"/>
+        <element name="Recipe" positionX="-63" positionY="-18" width="128" height="89"/>
     </elements>
 </model>
